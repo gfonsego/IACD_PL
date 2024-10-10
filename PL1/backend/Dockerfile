@@ -5,7 +5,7 @@ FROM node
 WORKDIR /app
 
 # Install app dependencies [From and To]
-COPY . /app/
+COPY . .
 
 # Run app dependencies
 RUN npm install

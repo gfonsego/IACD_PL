@@ -24,7 +24,7 @@ Use the following commanda line
 `docker run -d --name mongodb -p 27017:27017 mongo`
 
 8. Run Frontend container
-`docker run -d --name frontend -p 3000:80 frontend_image`
+`docker run -d --name frontend -p 3000:3000 frontend_image`
 
 9. Run Backend container
 `docker run -d --name backend -p 80:80 backend_image`
