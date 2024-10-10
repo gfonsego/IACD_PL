@@ -1,6 +1,6 @@
-## IACD PL Classes
+# IACD PL Classes
 
-### PL1 - Build Images and Run Containers
+## Project 1
 
-1. Dockerfiles - OK
-2. Command Lines - NOK
+1. PL #1 - OK
+2. PL #2 - NOK
