@@ -12,6 +12,8 @@
 >> docker build -t jmbp75/iacd_pl4 .
 >> docker push jmbp75/iacd_pl4
 
+* Check images in dockerhub
+
 ** 2- Imperative Approach **
 
 >> minikube start
@@ -32,6 +34,8 @@
 
 >> kubectl get deployments
 >> kubectl get pods
+
+>> kubectl expose deployment backend_deployment --type=LoadBalancer --port=80
 
 
 ** 3- Declarative Approach **
