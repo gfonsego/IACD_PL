@@ -2,7 +2,7 @@
 * From: `mongodb://mongodb:27017/course-goals`
 * To: `'mongodb://mongo-service:27017/course-goals` where mongo-service is the name defined in the mongodb-service.yaml file.
 
-2. Build and push backend image with the change in backend code
+2. Build and push backend image with the changes in the backend code
 * docker build -t jmbp75/iacd_pl4_backend .
 * docker push jmbp75/iacd_pl4_backend
 
@@ -23,7 +23,7 @@
 * From `http://localhost/goals` 
 * To `http://**Ip found in the previous command**/goals`
 
-6. Build and push frontend image with the change in backend code
+6. Build and push frontend image with the changes in the frontend code
 * docker build -t jmbp75/iacd_pl4 .
 * docker push jmbp75/iacd_pl4
 
