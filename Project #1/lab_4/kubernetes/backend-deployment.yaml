@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bakend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-declarative
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: app-declarative
+        tier: backend
+    spec:
+      containers:
+      - name: backend
+        image: jmbp75/iacd_pl4_backend
