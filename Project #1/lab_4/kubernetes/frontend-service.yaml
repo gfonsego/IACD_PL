@@ -4,10 +4,9 @@ metadata:
   name: frontend-service
 spec:
   selector:
-    app: app-declarative
-    tier: frontend
+    app: frontend
   ports:
-    - protocol: 'TCP'
-      port: 3000
-      targetPort: 3000
+  - protocol: TCP
+    port: 4000
+    targetPort: 3000
   type: LoadBalancer

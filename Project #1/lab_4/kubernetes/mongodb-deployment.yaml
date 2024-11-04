@@ -6,13 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app-declarative
-      tier: mongodb
+      app: mongodb
   template:
     metadata:
       labels:
-        app: app-declarative
-        tier: mongodb
+        app: mongodb
     spec:
       containers:
       - name: mongodb

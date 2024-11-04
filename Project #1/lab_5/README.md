@@ -1,88 +1,35 @@
-** 1- Push Docker Images on DockerHub **
+1. Change the localhost address for mongoDB in the backend app
+* From: `mongodb://mongodb:27017/course-goals`
+* To: `'mongodb://mongo-service:27017/course-goals` where mongo-service is the name defined in the mongodb-service.yaml file.
 
->> docker login
+2. Build and push backend image with the change in backend code
+* docker build -t jmbp75/iacd_pl4_backend .
+* docker push jmbp75/iacd_pl4_backend
 
-* backend
+3. Apply deployments and services
+* kubectl apply -f=backend-deployment.yaml
+* kubectl apply -f=backend-service.yaml
+* kubectl apply -f=backend_pvc.yaml
+* kubectl apply -f=backend-pv.yaml
+* kubectl apply -f=mongodb-deployment.yaml
+* kubectl apply -f=mongodb-service.yaml
+* kubectl apply -f=mongodb-pvc.yaml
+* kubectl apply -f=mongodb-pv.yaml
 
->> docker build -t jmbp75/iacd_pl4_backend .
->> docker push jmbp75/iacd_pl4_backend
+4. Find backend url 
+* minikube service backend-service --url
+  
+5. Copy the ip and change the source code in the frontend app
+* From `http://localhost/goals` 
+* To `http://**Ip found in the previous command**/goals`
 
-* frontend
+6. Build and push frontend image with the change in backend code
+* docker build -t jmbp75/iacd_pl4 .
+* docker push jmbp75/iacd_pl4
 
->> docker build -t jmbp75/iacd_pl4 .
->> docker push jmbp75/iacd_pl4
+7. Apply deployments and services
+* kubectl apply -f=frontend-deployment.yaml
+* kubectl apply -f=frontend-service.yaml
 
-** 2- Imperative Approach **
-
->> minikube start
-
-##criar objetos Deployment
-
-* database mongodb
-
->> kubectl create deployment mongodb-deployment --replicas=1 --image=mongo
-
-* backend
-
->> kubectl create deployment backend-deployment --replicas=2 --image=jmbp75/iacd_pl4_backend
-
-* frontend
-
->> kubectl create deployment frontend-deployment --replicas=3 --image=jmbp75/iacd_pl4
-
->> kubectl get deployments
->> kubectl get pods
-
-
-** 3- Declarative Approach **
-
-* backend 
-
-## criar Deployment File
-------- backend-deployment.yaml
-
-## Fazer Deployment
-
->> kubectl apply -f=backend-deployment.yaml
->> kubectl get deployments
->> kubectl get pods
-
-## criar Service object File
--------- backend-service.yaml
-
->> kubectl apply -f=backend-service.yaml
->> kubectl get services 
-
-* frontend
-
-## criar Deployment File
-------- frontend-deployment.yaml
-
-## Fazer Deployment
-
->> kubectl apply -f=frontend-deployment.yaml
->> kubectl get deployments
->> kubectl get pods
-
-## criar Service object File
--------- frontnd-service.yaml
-
->> kubectl apply -f=frontend-service.yaml
->> kubectl get services 
-
-* mongodb
-
-## criar Deployment File
-------- mongodb-deployment.yaml
-
-## Fazer Deployment
-
->> kubectl apply -f=mongodb-deployment.yaml
->> kubectl get deployments
->> kubectl get pods
-
-## criar Service object File
--------- mongodb-service.yaml
-
->> kubectl apply -f=mongodb-service.yaml
->> kubectl get services 
+8. Open the App
+* minikube service frontend-service

@@ -6,15 +6,14 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app-declarative
-      tier: frontend
+      app: frontend
   template:
     metadata:
       labels:
-        app: app-declarative
-        tier: frontend
+        app: frontend
     spec:
       containers:
       - name: frontend
         image: jmbp75/iacd_pl4
-        ports: 3000
+        ports: 
+        - containerPort: 3000
