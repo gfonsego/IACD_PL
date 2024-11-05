@@ -1,4 +1,4 @@
-1. Change the localhost address for mongoDB in the backend app
+1. Change the address for mongoDB in the backend app
 * From: `mongodb://mongodb:27017/course-goals`
 * To: `'mongodb://mongo-service:27017/course-goals` where mongo-service is the name defined in the mongodb-service.yaml file.
 
