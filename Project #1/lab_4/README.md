@@ -35,7 +35,7 @@
 >> kubectl get deployments
 >> kubectl get pods
 
->> kubectl expose deployment backend_deployment --type=LoadBalancer --port=80
+>> kubectl expose deployment backend-deployment --type=LoadBalancer --port=80
 
 
 ** 3- Declarative Approach **

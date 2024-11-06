@@ -3,14 +3,10 @@ FROM node
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
 
 COPY . .
 
-RUN npm run build
-
-# Install a lightweight web server to serve the static files
-RUN npm install -g serve
+RUN npm install
 
 EXPOSE 3000
 

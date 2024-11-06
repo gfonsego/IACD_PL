@@ -10,11 +10,11 @@
 * kubectl apply -f=backend-deployment.yaml
 * kubectl apply -f=backend-service.yaml
 * kubectl apply -f=backend_pvc.yaml
-* kubectl apply -f=backend-pv.yaml
+* kubectl apply -f=backend_pv.yaml
 * kubectl apply -f=mongodb-deployment.yaml
 * kubectl apply -f=mongodb-service.yaml
-* kubectl apply -f=mongodb-pvc.yaml
-* kubectl apply -f=mongodb-pv.yaml
+* kubectl apply -f=mongo_pvc.yaml
+* kubectl apply -f=mongo_pv.yaml
 
 4. Find backend url 
 * minikube service backend-service --url
