@@ -1,92 +1,77 @@
-** 1- Push Docker Images on DockerHub **
+1. docker login
 
->> docker login
+2. Build backend image:
+`docker build -t jmbp75/iacd_pl4_backend .`
 
-* backend
+3. Push backend image to DockerHub:
+`docker push jmbp75/iacd_pl4_backend`
 
->> docker build -t jmbp75/iacd_pl4_backend .
->> docker push jmbp75/iacd_pl4_backend
+4. Build frontend image:
+`docker build -t jmbp75/iacd_pl4 .`
 
-* frontend
-
->> docker build -t jmbp75/iacd_pl4 .
->> docker push jmbp75/iacd_pl4
-
-* Check images in dockerhub
-
-** 2- Imperative Approach **
-
->> minikube start
-
-##criar objetos Deployment
-
-* database mongodb
-
->> kubectl create deployment mongodb-deployment --replicas=1 --image=mongo
-
-* backend
-
->> kubectl create deployment backend-deployment --replicas=2 --image=jmbp75/iacd_pl4_backend
-
-* frontend
-
->> kubectl create deployment frontend-deployment --replicas=3 --image=jmbp75/iacd_pl4
-
->> kubectl get deployments
->> kubectl get pods
-
->> kubectl expose deployment backend-deployment --type=LoadBalancer --port=80
+5. Push frontend image to DockerHub:
+`docker push jmbp75/iacd_pl4`
 
 
-** 3- Declarative Approach **
+# Imperative Approach
 
-* backend 
+1. Start minikube to use kubernetes locally:
+`minikube start`
 
-## criar Deployment File
-------- backend-deployment.yaml
+2. Create object deployments
 
-## Fazer Deployment
+#### database mongodb
+`kubectl create deployment mongodb-deployment --replicas=1 --image=mongo`
 
->> kubectl apply -f=backend-deployment.yaml
->> kubectl get deployments
->> kubectl get pods
+#### backend
+`kubectl create deployment backend-deployment --replicas=2 --image=jmbp75/iacd_pl4_backend`
 
-## criar Service object File
--------- backend-service.yaml
+#### frontend
+`kubectl create deployment frontend-deployment --replicas=3 --image=jmbp75/iacd_pl4`
 
->> kubectl apply -f=backend-service.yaml
->> kubectl get services 
+3. Check deployments
+`kubectl get deployments`
 
-* frontend
+4. Check Pods
+`kubectl get pods`
 
-## criar Deployment File
-------- frontend-deployment.yaml
 
-## Fazer Deployment
+# Declarative Approach 
 
->> kubectl apply -f=frontend-deployment.yaml
->> kubectl get deployments
->> kubectl get pods
+1. Create a folder named kubernetes to store all the created files.
 
-## criar Service object File
--------- frontnd-service.yaml
+2. Create backend deployment file.
 
->> kubectl apply -f=frontend-service.yaml
->> kubectl get services 
+3. Deploy backend deployment file:
+`kubectl apply -f=backend-deployment.yaml`
+   
+4. Create backend service file
 
-* mongodb
+5. Deploy backend service file:
+`kubectl apply -f=backend-service.yaml`
 
-## criar Deployment File
-------- mongodb-deployment.yaml
+6. Create frontend deployment file.
 
-## Fazer Deployment
+7. Deploy frontend deployment file:
+`kubectl apply -f=frontend-deployment.yaml`
 
->> kubectl apply -f=mongodb-deployment.yaml
->> kubectl get deployments
->> kubectl get pods
+8. Create frontend service file.
 
-## criar Service object File
--------- mongodb-service.yaml
+9. Deploy frontend service file:
+`kubectl apply -f=frontend-service.yaml`
 
->> kubectl apply -f=mongodb-service.yaml
->> kubectl get services 
+10. Create mongodb deployment file.
+
+11. Deploy mongodb deployment file:
+`kubectl apply -f=mongodb-deployment.yaml`
+
+12. Create mongodb service file.
+
+13. Deploy mongodb service file:
+`kubectl apply -f=mongodb-service.yaml`
+
+14. Check deployments
+`kubectl get deployments`
+
+15. Check Pods
+`kubectl get pods`
